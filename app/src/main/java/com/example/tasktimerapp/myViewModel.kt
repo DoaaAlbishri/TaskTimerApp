@@ -14,19 +14,32 @@ class myViewModel(application : Application): AndroidViewModel(application) {
 
     private val repository: TaskRepository
     private val Task: LiveData<List<Task>>
+    private val sum: LiveData<Int>
+
     init {
         val noteDao = TasksDatabase.getInstance(application).TaskDao()
         repository = TaskRepository(noteDao)
         Task = repository.getTasks
+        sum = repository.getSum()
     }
 
     fun getTasks(): LiveData<List<Task>>{
         return Task as LiveData<List<Task>>
     }
 
-    fun addTask(Titel: String, Description: String,Time: Int){
+    fun getSum() : LiveData<Int> {
+        return sum
+    }
+
+    fun addTask(Titel: String, Description: String){
         CoroutineScope(Dispatchers.IO).launch {
-            repository.addTask(Task(0, Titel,Description,Time))
+            repository.addTask(Task(0, Titel,Description,0))
+        }
+    }
+
+    fun updateTask(Id: Int, Time: Int){
+        CoroutineScope(Dispatchers.IO).launch {
+            repository.updateTask(Id, Time)
         }
     }
 

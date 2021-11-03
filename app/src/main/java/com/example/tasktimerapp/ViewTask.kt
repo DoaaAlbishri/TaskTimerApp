@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 class ViewTask : AppCompatActivity() {
 
     lateinit var recyclerView :RecyclerView
-    lateinit var tasksViewTask : TasksAdapter
+    lateinit var tasks_adapter : TasksAdapter
     private val myViewModel by lazy { ViewModelProvider(this).get(myViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,11 +22,11 @@ class ViewTask : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
 
         myViewModel.getTasks().observe(this,{
-            Tasks -> tasksViewTask.Update(Tasks)
+            Tasks -> tasks_adapter.Update(Tasks)
         })
 
-        tasksViewTask = TasksAdapter(this)
-        recyclerView.adapter = tasksViewTask
+        tasks_adapter = TasksAdapter(this)
+        recyclerView.adapter = tasks_adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
     }
