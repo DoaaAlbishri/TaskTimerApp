@@ -7,19 +7,22 @@ import android.widget.TextView
 import com.skydoves.elasticviews.ElasticButton
 
 class MainActivity : AppCompatActivity() {
-    lateinit var textView:TextView
+
     lateinit var addBtn: ElasticButton
     lateinit var viewBtn: ElasticButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        textView = findViewById(R.id.textView)
+
         addBtn = findViewById(R.id.addBtn)
         viewBtn = findViewById(R.id.viewBtn)
+
         addBtn.setOnClickListener {
             val intent = Intent(applicationContext,AddTask::class.java)
             startActivity(intent)
         }
+
         viewBtn.setOnClickListener {
             val intent = Intent(applicationContext,ViewTask::class.java)
             startActivity(intent)

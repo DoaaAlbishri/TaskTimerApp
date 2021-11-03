@@ -18,7 +18,10 @@ interface TaskDao {
     @Delete
     fun deleteTask(task: Task)
 
-    @Query("UPDATE Tasks SET Title=:t WHERE id=:id")
-    fun updateTask(id:Int,t:String)
+    @Query("UPDATE Tasks SET TotalTime=:t WHERE id=:id")
+    fun updateTask(id:Int,t:Int)
+
+    @Query("SELECT SUM(TotalTime) FROM Tasks")
+    fun getSum(): LiveData<Int>
 
 }

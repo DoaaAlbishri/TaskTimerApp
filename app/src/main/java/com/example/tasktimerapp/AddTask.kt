@@ -10,17 +10,22 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import com.skydoves.elasticviews.ElasticButton
 
 class AddTask : AppCompatActivity() {
+
     lateinit var textView2: TextView
     lateinit var saveBtn: ElasticButton
     lateinit var etName: EditText
     lateinit var etDescription: EditText
     lateinit var imageView: ImageView
+    private val myViewModel by lazy { ViewModelProvider(this).get(myViewModel::class.java) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_task)
+
         textView2 = findViewById(R.id.textView2)
         saveBtn = findViewById(R.id.saveBtn)
         etName = findViewById(R.id.etName)
@@ -31,6 +36,7 @@ class AddTask : AppCompatActivity() {
             save()
         }
     }
+
     fun save(){
         if(etName.text.isEmpty()||etDescription.text.isEmpty()){
             Toast.makeText(this, "please fill all the fields", Toast.LENGTH_SHORT).show()
@@ -38,7 +44,8 @@ class AddTask : AppCompatActivity() {
             val name = etName.text.toString()
             val description = etDescription.text.toString()
             //added them to DB
-
+            myViewModel.addTask(name,description)
+            Toast.makeText(this, "added Task successfully", Toast.LENGTH_SHORT).show()
             //show image view when added successfully
             //imageView.isVisible = true
         }
