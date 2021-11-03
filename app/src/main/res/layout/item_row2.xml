@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_margin="24dp"
     android:layout_height="wrap_content">
     <com.skydoves.elasticviews.ElasticLayout
         android:id="@+id/lcvAll"
@@ -26,14 +25,18 @@
         app:cardUseCompatPadding="true">
 
         <LinearLayout
+            android:padding="15dp"
+            android:layout_marginStart="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp">
 
             <TextView
                 android:id="@+id/tvNameAll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
                 android:layout_gravity="center_horizontal"
                 android:text="Data will be displayed here"
                 android:textColor="@color/brown"
@@ -46,6 +49,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="30dp"
                 android:text="timer"
+                android:fontFamily="sans-serif-condensed-medium"
                 android:textSize="20sp"
                 android:textColor="@color/brown"
                 android:layout_marginLeft="30dp" />

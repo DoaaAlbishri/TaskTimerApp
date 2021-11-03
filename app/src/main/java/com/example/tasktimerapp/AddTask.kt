@@ -2,6 +2,7 @@ package com.example.tasktimerapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.EditText
@@ -47,13 +48,19 @@ class AddTask : AppCompatActivity() {
             myViewModel.addTask(name,description)
             Toast.makeText(this, "added Task successfully", Toast.LENGTH_SHORT).show()
             //show image view when added successfully
-            //imageView.isVisible = true
+            imageView.isVisible = true
+            etName.text.clear()
+            etDescription.text.clear()
         }
-        etName.text.clear()
-        etDescription.text.clear()
         //hide image
-        //add timer for hide image
-        //imageView.isVisible=false
+        val countDownTimer = object : CountDownTimer(2000,1000) {
+            override fun onTick(p0: Long) {
+            }
+            override fun onFinish() {
+                imageView.isVisible=false
+            }
+        }
+        countDownTimer.start()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

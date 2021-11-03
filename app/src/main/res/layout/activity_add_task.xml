@@ -79,7 +79,7 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="90dp"
-            android:src="@drawable/ic_baseline_done_outline_24"
+            android:src="@drawable/ic_baseline_done_outline_b_24"
             android:visibility="gone"
             />
 
