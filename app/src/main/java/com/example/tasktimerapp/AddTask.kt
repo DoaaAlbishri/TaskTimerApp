@@ -21,7 +21,7 @@ class AddTask : AppCompatActivity() {
     lateinit var etName: EditText
     lateinit var etDescription: EditText
     lateinit var imageView: ImageView
-    private val myViewModel by lazy { ViewModelProvider(this).get(myViewModel::class.java) }
+    private val myViewModel by lazy { ViewModelProvider(this).get(MyViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +67,7 @@ class AddTask : AppCompatActivity() {
         menuInflater.inflate(R.menu.menus, menu)
         val item2: MenuItem = menu!!.getItem(1)
         item2.setTitle("View Task")
+        item2.setIcon(R.drawable.ic_baseline_calendar_view_day_24)
         return true
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

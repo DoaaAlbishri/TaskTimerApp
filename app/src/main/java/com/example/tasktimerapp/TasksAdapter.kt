@@ -1,6 +1,5 @@
 package com.example.tasktimerapp
 
-import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +17,7 @@ class TasksAdapter(val activity: ViewTask): RecyclerView.Adapter<TasksAdapter.It
     var ACTIVE = false
     var TIME = 0
     var CId = 0
-    private val myViewModel by lazy { ViewModelProvider(activity).get(myViewModel::class.java) }
+    private val myViewModel by lazy { ViewModelProvider(activity).get(MyViewModel::class.java) }
 
     class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 

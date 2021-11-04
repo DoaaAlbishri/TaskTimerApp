@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.item_row2.view.*
 class TimeAdapter(val activity: TaskTime) : RecyclerView.Adapter<TimeAdapter.ItemViewHolder>() {
 
     private var Tasks = emptyList<Task>()
-    private val myViewModel by lazy { ViewModelProvider(activity).get(myViewModel::class.java) }
+    private val myViewModel by lazy { ViewModelProvider(activity).get(MyViewModel::class.java) }
 
     class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
@@ -29,7 +29,7 @@ class TimeAdapter(val activity: TaskTime) : RecyclerView.Adapter<TimeAdapter.Ite
         val task = Tasks[position]
         holder.itemView.apply {
             tvNameAll.text = task.title
-            tvTimerAll.text = task.totalTime.toString()
+            tvTimerAll.text = task.totalTime.toString() +" sec"
         }
     }
 

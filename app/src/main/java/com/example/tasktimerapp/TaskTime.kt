@@ -9,13 +9,12 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.tasktimerapp.database.Task
 
 class TaskTime : AppCompatActivity() {
 
     lateinit var tvTotalForAll2: TextView
     lateinit var recyclerView22: RecyclerView
-    private val myViewModel by lazy { ViewModelProvider(this).get(myViewModel::class.java) }
+    private val myViewModel by lazy { ViewModelProvider(this).get(MyViewModel::class.java) }
     lateinit var time_adapter : TimeAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +37,7 @@ class TaskTime : AppCompatActivity() {
 
     }
     fun setText(sum: Int){
-        tvTotalForAll2.text = "Total Time For All Task : $sum"
+        tvTotalForAll2.text = "Total Time For All Task : $sum sec"
     }
 
     //Menu
@@ -46,6 +45,7 @@ class TaskTime : AppCompatActivity() {
         menuInflater.inflate(R.menu.menus, menu)
         val item2: MenuItem = menu!!.getItem(1)
         item2.setTitle("View Task")
+        item2.setIcon(R.drawable.ic_baseline_calendar_view_day_24)
         return true
     }
 

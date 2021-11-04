@@ -13,7 +13,7 @@ class ViewTask : AppCompatActivity() {
 
     lateinit var recyclerView :RecyclerView
     lateinit var tasks_adapter : TasksAdapter
-    private val myViewModel by lazy { ViewModelProvider(this).get(myViewModel::class.java) }
+    private val myViewModel by lazy { ViewModelProvider(this).get(MyViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -10,7 +10,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class myViewModel(application : Application): AndroidViewModel(application) {
+class MyViewModel(application : Application): AndroidViewModel(application) {
 
     private val repository: TaskRepository
     private val Task: LiveData<List<Task>>
