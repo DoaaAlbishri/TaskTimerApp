@@ -20,7 +20,7 @@ class MyViewModel(application : Application): AndroidViewModel(application) {
         val noteDao = TasksDatabase.getInstance(application).TaskDao()
         repository = TaskRepository(noteDao)
         Task = repository.getTasks
-        sum = repository.getSum()
+        sum = repository.getSum
     }
 
     fun getTasks(): LiveData<List<Task>>{

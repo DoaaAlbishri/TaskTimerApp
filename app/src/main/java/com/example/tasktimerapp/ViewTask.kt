@@ -1,6 +1,8 @@
 package com.example.tasktimerapp
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -14,6 +16,7 @@ class ViewTask : AppCompatActivity() {
     lateinit var recyclerView :RecyclerView
     lateinit var tasks_adapter : TasksAdapter
     private val myViewModel by lazy { ViewModelProvider(this).get(MyViewModel::class.java) }
+    lateinit var PH: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +28,10 @@ class ViewTask : AppCompatActivity() {
             Tasks -> tasks_adapter.Update(Tasks)
         })
 
-        tasks_adapter = TasksAdapter(this)
+        PH = this.getSharedPreferences(
+            getString(R.string.preference_file_key), Context.MODE_PRIVATE)
+
+        tasks_adapter = TasksAdapter(this,PH)
         recyclerView.adapter = tasks_adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
