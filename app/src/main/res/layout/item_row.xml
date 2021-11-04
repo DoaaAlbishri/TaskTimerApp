@@ -55,16 +55,25 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginVertical="5dp"
+                android:gravity="center"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvTimer"
-                    android:layout_width="match_parent"
+                <com.androchef.happytimer.countdowntimer.DynamicCountDownView
+                    android:id="@+id/UserTimer"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/brown"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:textSize="20sp"
-                    android:text="Timer:" />
+                    app:dynamic_timer_text_color="@android:color/white"
+                    app:dynamic_timer_text_separator_color="@color/colorGrey"
+                    app:dynamic_timer_text_size="12sp"
+                    app:dynamic_timer_separator_text_size="15sp"
+                    app:dynamic_timer_text_isBold="true"
+                    app:dynamic_timer_text__separator_isBold="true"
+                    app:dynamic_timer_text_separator=":"
+                    app:dynamic_show_hour="true"
+                    app:dynamic_show_labels="true"
+                    app:dynamic_show_minutes="true"
+                    app:dynamic_show_seconds="true" />
             </LinearLayout>
 
         </LinearLayout>
