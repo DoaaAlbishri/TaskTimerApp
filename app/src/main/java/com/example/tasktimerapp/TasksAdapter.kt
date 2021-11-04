@@ -1,18 +1,20 @@
 package com.example.tasktimerapp
 
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.androchef.happytimer.countdowntimer.HappyTimer
 import com.example.tasktimerapp.database.Task
 import kotlinx.android.synthetic.main.item_row.view.*
 
 class TasksAdapter(val activity: ViewTask): RecyclerView.Adapter<TasksAdapter.ItemViewHolder>() {
 
     private var Tasks = emptyList<Task>()
-    private var timer = timer(1000)
+    private var Init_Timer = 10000
     var ACTIVE = false
     var TIME = 0
     var CId = 0
@@ -35,15 +37,16 @@ class TasksAdapter(val activity: ViewTask): RecyclerView.Adapter<TasksAdapter.It
         holder.itemView.apply {
             tvName.text = task.title
             tvDescription.text = task.description
-            //tvTimer.text = Task.totalTime.toString()
+            UserTimer.timerType = HappyTimer.Type.COUNT_UP
+            UserTimer.timerTextBackgroundTintColor = Color.DKGRAY
+            UserTimer.initTimer(Init_Timer)
             cv.setOnClickListener {
                 if(!ACTIVE){
                     CId = task.id
-                    timer.start()
-                    timer.setOnTickListener(object :timer.OnTickListener{
+                    UserTimer.startTimer()
+                    UserTimer.setOnTickListener(object :HappyTimer.OnTickListener{
                         //OnTick
                         override fun onTick(completedSeconds: Int, remainingSeconds: Int) {
-                            tvTimer.text = "Timer : $completedSeconds"
                             TIME = remainingSeconds
                         }
 
@@ -51,12 +54,12 @@ class TasksAdapter(val activity: ViewTask): RecyclerView.Adapter<TasksAdapter.It
                     })
                     ACTIVE = true
                 }else{
-                    timer.stop()
-                    TIME = 1000 - TIME
+                    UserTimer.stopTimer()
+                    UserTimer.resetTimer()
+                    TIME = Init_Timer - TIME
                     myViewModel.updateTask(CId, task.totalTime+TIME)
                     ACTIVE = false
                     TIME = 0
-                    timer = timer(1000)
                 }
 
             }
