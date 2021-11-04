@@ -35,17 +35,20 @@ class TasksAdapter(val activity: ViewTask): RecyclerView.Adapter<TasksAdapter.It
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val task = Tasks[position]
         holder.itemView.apply {
+
             tvName.text = task.title
             tvDescription.text = task.description
+
             UserTimer.timerType = HappyTimer.Type.COUNT_UP
             UserTimer.timerTextBackgroundTintColor = Color.DKGRAY
             UserTimer.initTimer(Init_Timer)
+
             cv.setOnClickListener {
                 if(!ACTIVE){
                     CId = task.id
+                    //Start timer
                     UserTimer.startTimer()
                     UserTimer.setOnTickListener(object :HappyTimer.OnTickListener{
-                        //OnTick
                         override fun onTick(completedSeconds: Int, remainingSeconds: Int) {
                             TIME = remainingSeconds
                         }
@@ -63,6 +66,7 @@ class TasksAdapter(val activity: ViewTask): RecyclerView.Adapter<TasksAdapter.It
                 }
 
             }
+
         }
     }
 

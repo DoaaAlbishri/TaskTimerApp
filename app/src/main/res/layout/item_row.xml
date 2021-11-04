@@ -49,13 +49,13 @@
                 android:fontFamily="sans-serif-condensed-medium"
                 android:layout_gravity="center_horizontal"
                 android:text="Data will be displayed here"
-                android:textSize="18sp"
+                android:textSize="14sp"
+                android:paddingHorizontal="5dp"
                 android:textColor="@color/brown" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginVertical="5dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
