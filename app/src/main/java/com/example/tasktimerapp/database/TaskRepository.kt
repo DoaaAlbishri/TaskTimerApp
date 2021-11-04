@@ -14,5 +14,10 @@ class TaskRepository(private val TaskDao: TaskDao) {
         TaskDao.updateTask(id, totalTime)
     }
 
+    suspend fun updateTime(id: Int, time:Int){
+        TaskDao.updateTime(id, time)
+    }
+
     val getSum: LiveData<Int> = TaskDao.getSum()
+    val getTime: Int = TaskDao.getTime()
 }

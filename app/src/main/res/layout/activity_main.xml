@@ -25,7 +25,7 @@
                 android:gravity="center"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:textColor="@color/brown"
-                android:text="Task Timer Apps"
+                android:text="Task Timer App"
                 android:textSize="36sp" />
 
     </com.skydoves.elasticviews.ElasticLayout>

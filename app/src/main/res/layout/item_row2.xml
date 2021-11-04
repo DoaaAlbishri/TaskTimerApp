@@ -27,14 +27,14 @@
         <LinearLayout
             android:padding="15dp"
             android:layout_marginStart="15dp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginLeft="15dp">
 
             <TextView
                 android:id="@+id/tvNameAll"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:layout_gravity="center_horizontal"
@@ -46,13 +46,11 @@
                 android:id="@+id/tvTimerAll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="30dp"
-                android:text="timer"
+                android:gravity="right"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:textSize="20sp"
+                android:text="timer"
                 android:textColor="@color/brown"
-                android:layout_marginLeft="30dp" />
+                android:textSize="20sp" />
 
         </LinearLayout>
 

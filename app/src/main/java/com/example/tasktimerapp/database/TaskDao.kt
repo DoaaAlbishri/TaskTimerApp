@@ -21,7 +21,13 @@ interface TaskDao {
     @Query("UPDATE Tasks SET TotalTime=:t WHERE id=:id")
     fun updateTask(id:Int,t:Int)
 
+    @Query("UPDATE Tasks SET Time=:t WHERE id=:id")
+    fun updateTime(id:Int,t:Int)
+
     @Query("SELECT SUM(TotalTime) FROM Tasks")
     fun getSum(): LiveData<Int>
+
+    @Query("SELECT SUM(Time) FROM Tasks")
+    fun getTime(): Int
 
 }
