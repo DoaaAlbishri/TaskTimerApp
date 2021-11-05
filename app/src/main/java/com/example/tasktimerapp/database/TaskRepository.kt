@@ -20,4 +20,8 @@ class TaskRepository(private val TaskDao: TaskDao) {
 
     val getSum: LiveData<Int> = TaskDao.getSum()
     val getTime: Int = TaskDao.getTime()
+
+    suspend fun deleteTask(task: Task){
+        TaskDao.deleteTask(task)
+    }
 }

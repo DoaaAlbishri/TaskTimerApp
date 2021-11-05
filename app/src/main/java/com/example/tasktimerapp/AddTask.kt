@@ -26,7 +26,7 @@ class AddTask : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_task)
-
+        setTitle("Task Information")
         textView2 = findViewById(R.id.textView2)
         saveBtn = findViewById(R.id.saveBtn)
         etName = findViewById(R.id.etName)

@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        getSupportActionBar()!!.hide()
         addBtn = findViewById(R.id.addBtn)
         viewBtn = findViewById(R.id.viewBtn)
 

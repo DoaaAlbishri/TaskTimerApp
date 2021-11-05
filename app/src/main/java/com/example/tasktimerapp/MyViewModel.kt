@@ -53,4 +53,10 @@ class MyViewModel(application : Application): AndroidViewModel(application) {
         }
     }
 
+    fun deleteTask(task:Task){
+        CoroutineScope(Dispatchers.IO).launch {
+            repository.deleteTask(task)
+        }
+    }
+
 }

@@ -20,7 +20,7 @@ class ViewTask : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_task)
-
+        setTitle("Task Activity")
         recyclerView = findViewById(R.id.recyclerView)
 
         myViewModel.getTasks().observe(this,{

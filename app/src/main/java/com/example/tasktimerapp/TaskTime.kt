@@ -9,6 +9,8 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_row.view.*
+import java.text.SimpleDateFormat
 
 class TaskTime : AppCompatActivity() {
 
@@ -20,7 +22,7 @@ class TaskTime : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_time)
-
+        setTitle("Task Summary")
         tvTotalForAll2=findViewById(R.id.tvTotalForAll2)
         recyclerView22=findViewById(R.id.recyclerView22)
 
@@ -28,7 +30,7 @@ class TaskTime : AppCompatActivity() {
                 Tasks -> time_adapter.Update(Tasks)
         })
         myViewModel.getSum().observe(this,{
-            sum -> setText(sum)
+            sum -> if(sum!=null) setText(sum) else setText(0)
         })
 
         time_adapter = TimeAdapter(this)
@@ -37,6 +39,7 @@ class TaskTime : AppCompatActivity() {
 
     }
     fun setText(sum: Int){
+        //tvTotalForAll2.text= "Total Time For All Task : ${SimpleDateFormat("mm:ss").format(sum*1000)}"
         tvTotalForAll2.text = "Total Time For All Task : $sum sec"
     }
 

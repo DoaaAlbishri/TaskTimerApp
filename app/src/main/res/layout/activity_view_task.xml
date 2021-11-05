@@ -19,16 +19,17 @@
             app:layout_duration="500"
             app:layout_scale="0.85"
             tools:ignore="MissingConstraints">
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_gravity="center"
-        android:textAlignment="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/brown"
-        android:text="All Task"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="Your Task"
+                android:textAlignment="center"
+                android:textColor="@color/brown"
+                android:textSize="36sp" />
         </com.skydoves.elasticviews.ElasticLayout>
 
     <androidx.recyclerview.widget.RecyclerView

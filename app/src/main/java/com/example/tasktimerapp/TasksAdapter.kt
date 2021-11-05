@@ -1,19 +1,20 @@
 package com.example.tasktimerapp
 
-
+//update adapter doaa
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.androchef.happytimer.countdowntimer.HappyTimer
 import com.example.tasktimerapp.database.Task
 import kotlinx.android.synthetic.main.item_row.view.*
 import java.text.SimpleDateFormat
-
 class TasksAdapter(val activity: ViewTask): RecyclerView.Adapter<TasksAdapter.ItemViewHolder>() {
     private var Tasks = emptyList<Task>()
-    private var Init_Timer = 10000
+    private var Init_Timer = 100000
     var ACTIVE = false
     var TIME = 0
     var CId = 0
@@ -42,15 +43,24 @@ class TasksAdapter(val activity: ViewTask): RecyclerView.Adapter<TasksAdapter.It
                 if(!ACTIVE){
                     CId = task.id
                     timer.resume()
-                    timer.setOnTickListener(object :HappyTimer.OnTickListener{
+                        timer.setOnTickListener(object :HappyTimer.OnTickListener{
                         //OnTick
                         override fun onTick(completedSeconds: Int, remainingSeconds: Int) {
-                            tvTimer.text = "Timer : ${SimpleDateFormat("mm:ss").format(completedSeconds*1000)}"
+                            var finalTime = task.time+completedSeconds
+                            val countDownTimer = object : CountDownTimer(1000,500) {
+                                override fun onTick(p0: Long) {
+                                }
+                                override fun onFinish() {
+                                    tvTimer.text = "Timer : ${SimpleDateFormat("mm:ss").format(finalTime*1000)}"
+                                }
+                            }
+                            countDownTimer.start()
                             //println(completedSeconds)
-                            TIME = remainingSeconds
-                            myViewModel.updateTime(CId,completedSeconds)
+                            TIME = remainingSeconds - task.time
+                            myViewModel.updateTime(CId,finalTime)
                         }
-                        override fun onTimeUp(){}
+                        override fun onTimeUp(){
+                        }
                     })
                     ACTIVE = true
                 }else{
@@ -58,13 +68,21 @@ class TasksAdapter(val activity: ViewTask): RecyclerView.Adapter<TasksAdapter.It
                     if(CId != task.id){
                         timer.pause()
                         myViewModel.updateTime(CId,TIME)
-                        myViewModel.updateTask(CId, task.totalTime+TIME)
+                        myViewModel.updateTask(CId, TIME)
                         timer = HappyTimer(Init_Timer)
                         timer.resume()
                         timer.setOnTickListener(object :HappyTimer.OnTickListener{
                             override fun onTick(completedSeconds: Int, remainingSeconds: Int) {
-                                tvTimer.text = "Timer : ${SimpleDateFormat("mm:ss").format(completedSeconds*1000)}"
-                                TIME = remainingSeconds
+                                var finalTime = task.time+completedSeconds
+                                val countDownTimer = object : CountDownTimer(1000,500) {
+                                    override fun onTick(p0: Long) {
+                                    }
+                                    override fun onFinish() {
+                                        tvTimer.text = "Timer : ${SimpleDateFormat("mm:ss").format(finalTime*1000)}"
+                                    }
+                                }
+                                countDownTimer.start()
+                                TIME = remainingSeconds - task.time
                             }
                             override fun onTimeUp(){}
                         })
@@ -74,11 +92,14 @@ class TasksAdapter(val activity: ViewTask): RecyclerView.Adapter<TasksAdapter.It
                         timer.pause()
                         timer = HappyTimer(Init_Timer)
                         myViewModel.updateTime(CId,TIME)
-                        myViewModel.updateTask(CId, task.totalTime+TIME)
+                        myViewModel.updateTask(CId, TIME)
                         ACTIVE = false
                         TIME = 0
                     }
                 }
+            }
+            deleteBtn.setOnClickListener {
+                myViewModel.deleteTask(task)
             }
         }
     }

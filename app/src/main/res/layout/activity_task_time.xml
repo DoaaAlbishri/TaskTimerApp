@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/brown"
-            android:text="Total Time For All Task"
+            android:text="Total Time"
             android:fontFamily="sans-serif-condensed-medium"
             android:textSize="36sp" />
         </com.skydoves.elasticviews.ElasticLayout>
@@ -40,14 +40,26 @@
             app:layout_duration="500"
             app:layout_scale="0.85"
             tools:ignore="MissingConstraints">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorNew1"
+                app:cardBackgroundColor="@color/colorNew1"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
         <TextView
             android:id="@+id/tvTotalForAll2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:padding="10dp"
+            android:layout_marginStart="10dp"
             android:textColor="@color/brown"
             android:text="Total Time For All Task: "
             android:textSize="20sp" />
+            </androidx.cardview.widget.CardView>
         </com.skydoves.elasticviews.ElasticLayout>
 
         <androidx.recyclerview.widget.RecyclerView
